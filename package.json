@@ -1,0 +1,20 @@
+{
+  "name": "web-servis",
+  "version": "1.0.0",
+  "description": "Restful web servis",
+  "main": "server.js",
+  "scripts": {
+    "start" :"nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "restful"
+  ],
+  "author": "Salih YESIR",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.15"
+  }
+}
