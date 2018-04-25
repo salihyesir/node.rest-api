@@ -1,0 +1,34 @@
+{
+  "name": "web-project",
+  "version": "1.0.0",
+  "description": "Bu web projesi nodejs ile oluşturduğum rest apiyi kullanmaktadır.This web project uses the rest service I created with NodeJS.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salihyesir/node.rest-api.git"
+  },
+  "keywords": [
+    "web",
+    "nodejs",
+    "socket",
+    "uses",
+    "rest",
+    "api"
+  ],
+  "author": "Salih Yesir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salihyesir/node.rest-api/issues"
+  },
+  "homepage": "https://github.com/salihyesir/node.rest-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "request": "^2.85.0",
+    "socket.io": "^2.1.0"
+  }
+}
