@@ -9,11 +9,11 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 router.get('/', function (req, res, next) {
     request('http://localhost:3000/restapi/notes',function(error,response,body){
         var data = JSON.parse(body);
-        res.render('index.ejs',{data});
+        res.render('note.ejs',{data});
     });
 });
-
 module.exports = router;

@@ -48,6 +48,9 @@ router.post('/notes', function(req, res)  {
     note.title = req.body.title;
     note.content = req.body.content;
     note.owner = req.body.owner;
+    date = new Date();
+    //date.toUTCString();
+    note.date = date.getDate() + '.' + date.getMonth()+  '.' + date.getFullYear();
     note.save(function(err){
         if (err) {
             res.status(400);

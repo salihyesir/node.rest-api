@@ -2,6 +2,7 @@ var express = require('express');
     app = express(),
     path = require('path'),
     bodyParser = require('body-parser'),
+    request = require('request'),
     http = require('http').Server(app),
     io = require('socket.io')(http),
     port= process.env.PORT || 8080;
@@ -26,8 +27,18 @@ app.use('/', routes);
   
 io.on('connection', function(socket){
     console.log('a user connected');
+    socket.on('deleteNote',function(data){
+        request.del("http://localhost:3000/restApi/notes/"+data
+        ,function(err, response , body){
+            console.log(body);
+        });
+         socket.broadcast.emit('deleteControl',{
+            id:data
+        });
+     });
 });
-  
+
+
 http.listen(8080, function(){
     console.log('listening on *:8080');
 });
