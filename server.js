@@ -88,16 +88,22 @@ router.put('/notes/:note_id', function(req, res) {
             res.json(err);
         }
         else{
-            console.log(req.body);
-            note.title = req.body.title;
-            note.content = req.body.content;
-            //note.owner =req.body.owner;
-            note.save( function (err)  {
+            var str = JSON.stringify(req.body); 
+            var obj = JSON.parse(str);
+            note.title = obj[0].title;
+            note.content = obj[0].content;
+            note.owner = obj[0].owner;
+            date = new Date();
+            //date.toUTCString();
+            note.date = date.getDate() + '.' + date.getMonth()+  '.' + date.getFullYear();
+            Note.updateOne( { _id: req.params.note_id }, { $set: note  }, function (err, results)  {
                 if (err) {
+                    console.log('err');
                     res.send(err);
                 }
                 else{
                     res.status(200);
+                    console.log(note);
                     res.json({message: "updated " + note});
                 }
             });

@@ -29,13 +29,20 @@ io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('deleteNote',function(data){
         request.del("http://localhost:3000/restApi/notes/"+data
-        ,function(err, response , body){
-            console.log(body);
-        });
-         socket.broadcast.emit('deleteControl',{
-            id:data
-        });
+        ,function(err, response , body){console.log(body);});
+         socket.broadcast.emit('deleteControl',{id:data});
      });
+     socket.on('updateNote',function(data){
+         var id = data[0]._id;
+         console.log(id);
+         delete data[0]._id;
+         request({ url: "http://localhost:3000/restApi/notes/"+id, method: 'PUT', json: data}, 
+         function(err, response , body){
+             console.log(body);
+            });
+            socket.broadcast.emit('updateControl',{id:data});
+        });
+     
 });
 
 

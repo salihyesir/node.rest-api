@@ -28,11 +28,12 @@
                 <a href="javascript:;" class="button update" onclick="update('<%= data[i]._id %>');">^^</a>
                 <a href="javascript:;" class="button remove" onclick="sil('<%= data[i]._id %>');">X</a>
                 <div class="note_cnt">
+                
                     <p id="<%= data[i]._id %>" style="display: none"></p>
-                    <textarea class="title"><%= data[i].title %></textarea>
-                    <textarea class="oldcnt"><%= data[i].content %></textarea>
-                    <textarea class="own"><%= data[i].owner %></textarea>
-                    <textarea class="date"><%= data[i].date  %></textarea>
+                    <textarea id="<%= data[i]._id%>T" class="title"><%= data[i].title %></textarea>
+                    <textarea id="<%= data[i]._id%>C"class="oldcnt"><%= data[i].content %></textarea>
+                    <textarea id="<%= data[i]._id%>O"class="own"><%= data[i].owner %></textarea>
+                    <label class="date"><%= data[i].date  %></label>
                 </div> 
             </div>
         <% } %>
@@ -54,6 +55,14 @@
         }
         socket.on('deleteControl',function(data){
             console.log('Remove Note');
+        });
+        function update(id){
+            var json = [{"_id": id ,"title": $('#'+id+'T').val(),"content": $('#'+id+'C').val(),"owner": $('#'+id+'O').val()}];
+            console.log(json);
+            socket.emit('updateNote',json);
+        }
+        socket.on('updateControl',function(data){
+            console.log(data);
         });
 
 </script>

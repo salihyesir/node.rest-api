@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var NoteSchema = new mongoose.Schema({
-    title: { type: String, default: "Nodejs" },
-    content: { type: String, default: "RestAPI" },
-    owner: { type: String , default: "Salih YESIR"},
+    _id: mongoose.Schema.Types.ObjectId,
+    title: { type: String },
+    content: { type: String },
+    owner: { type: String },
     date: {type: String, default: "Zaman"}
 });
 
