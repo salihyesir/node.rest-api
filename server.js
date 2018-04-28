@@ -14,7 +14,7 @@ process.title = "node-restapi";
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
-app.use('/restapi', router);
+app.use('/restApi', router);
 
 
 router.use(function(req, res, next)  {

@@ -26,6 +26,7 @@
   "homepage": "https://github.com/salihyesir/node.rest-api#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+	"cors": "^2.8.4",
     "ejs": "^2.5.9",
     "express": "^4.16.3",
     "request": "^2.85.0",

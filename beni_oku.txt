@@ -1,0 +1,4 @@
+komut satırından ilgili dizine girerek npm install komutunu giriniz.
+ardından npm start diyerek res apiyi çalıştırın.
+ikinci bir konsol ekran açarak web klasörüne girin ve npm install 
+ve ardından npm start komutunu girerek web uygulamasını çalıştırın.
