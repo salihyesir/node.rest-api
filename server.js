@@ -45,12 +45,15 @@ router.get('/notes', function(req, res)  {
 router.post('/notes', function(req, res)  {
     console.log('NOTES POST');
     var note = new Note();
-    note.title = req.body.title;
-    note.content = req.body.content;
-    note.owner = req.body.owner;
+    var str = JSON.stringify(req.body); 
+    var obj = JSON.parse(str);
+    note.title = obj[0].title;
+    note.content = obj[0].content;
+    note.owner = obj[0].owner;
     date = new Date();
-    //date.toUTCString();
-    note.date = date.getDate() + '.' + date.getMonth()+  '.' + date.getFullYear();
+    note.date = date.toUTCString();
+    //note.date = date.getDate() + '.' + date.getMonth()+  '.' + date.getFullYear();
+
     note.save(function(err){
         if (err) {
             res.status(400);
@@ -94,8 +97,8 @@ router.put('/notes/:note_id', function(req, res) {
             note.content = obj[0].content;
             note.owner = obj[0].owner;
             date = new Date();
-            //date.toUTCString();
-            note.date = date.getDate() + '.' + date.getMonth()+  '.' + date.getFullYear();
+            note.date = date.toUTCString();
+            //note.date = date.getDate() + '.' + date.getMonth()+  '.' + date.getFullYear();
             Note.updateOne( { _id: req.params.note_id }, { $set: note  }, function (err, results)  {
                 if (err) {
                     console.log('err');

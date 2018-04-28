@@ -42,6 +42,13 @@ io.on('connection', function(socket){
             });
             socket.broadcast.emit('updateControl',{id:data});
         });
+    socket.on('saveNote',function(data){
+        request({ url: "http://localhost:3000/restApi/notes/", method: 'POST', json: data}, 
+        function(err, response , body){
+            console.log(body);
+           });
+            socket.broadcast.emit('saveControl',{data});
+        });
      
 });
 

@@ -21,7 +21,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	</head>
 	<body>
-		<a href="javascript:;" class="button" id="add_new">Add New Note</a>
+		<button href="javascript:;" class="button" id="add_new">Add New Note</button>
 		<div id="board">
         <% for (var i =0 ; i < data.length ; i++ ) { %>
             <div class="note">
@@ -50,6 +50,7 @@
 
 <script>
         var socket = io.connect('/');
+
         function sil(value) {
             socket.emit('deleteNote',value);
         }
@@ -62,6 +63,17 @@
             socket.emit('updateNote',json);
         }
         socket.on('updateControl',function(data){
+            console.log(data);
+        });
+        function save(){
+            var json = [{"title": $('#newT').val(),"content": $('#newC').val(),"owner": $('#newO').val()}];
+            console.log(json);
+            socket.emit('saveNote',json);
+            //$("#add_new").prop("disabled",false);
+            location.reload(false);
+        }
+        socket.on('saveControl',function(data){
+            
             console.log(data);
         });
 

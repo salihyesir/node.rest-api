@@ -61,27 +61,29 @@
 })(jQuery);
 
 
+
 var noteTemp =  '<div class="note">'
-                +	'<a href="javascript:;" class="button update">^^</a>'
+                +	'<a id="newSave" href="javascript:;" class="button save" onclick="save();">S</a>'
                 +   '<a href="javascript:;" class="button remove">X</a>'
 				+ 	'<div class="note_cnt">'
-				+		'<textarea  class="title" placeholder="Enter note title"></textarea>'
-                + 		'<textarea class="cnt" placeholder="Enter note description here"></textarea>'
-                + 		'<textarea class="own" placeholder="Enter note owner here"></textarea>'
+				+		'<textarea id="newT" class="title" placeholder="Enter note title"></textarea>'
+                + 		'<textarea id="newC"class="cnt" placeholder="Enter note description here"></textarea>'
+                + 		'<textarea id="newO" class="own" placeholder="Enter note owner here"></textarea>'
 				+	'</div> '
 				+'</div>';
 
 var noteZindex = 1;
+
 function deleteNote(){
     $(this).parent('.note').hide("puff",{ percent: 133}, 250);
 };
 
 function newNote() {
+    $("#add_new").prop("disabled",true);
   $(noteTemp).hide().appendTo("#board").show("fade", 300).draggable().on('dragstart',
     function(){
        $(this).zIndex(++noteZindex);
     });
- 
 	$('.remove').click(deleteNote);
 	$('textarea').autogrow();
 	
